@@ -2,12 +2,17 @@
 
 Servo steeringServo;
 
-int potPin = A0;
-int servo = 9
-int potValue;
+// Joystick pins
+int joyX = A0;
+int joyY = A1;
+int servo = 9;
 
-int minAngle = 30;   // left limit
-int maxAngle = 150;  // right limit
+// Steering limits
+int minAngle = 30;
+int maxAngle = 150;
+
+// Dead zone
+int deadZone = 50;
 
 void setup() {
   steeringServo.attach(servo);
@@ -15,11 +20,19 @@ void setup() {
 
 void loop() {
 
-  potValue = analogRead(potPin);   // read potentiometer (0–1023)
+  int xVal = analogRead(joyX);
+  int yVal = analogRead(joyY);
 
-  int angle = map(potValue, 0, 1023, minAngle, maxAngle);
+  // ---------- STEERING ----------
+  int angle = map(xVal, 0, 1023, minAngle, maxAngle);
+
+  // Dead zone for center
+  if (abs(xVal - 512) < deadZone) {
+    angle = 90;
+  }
 
   steeringServo.write(angle);
 
+  // ---------- THROTTLE ----------
   delay(10);
 }
