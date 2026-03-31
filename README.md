@@ -35,12 +35,12 @@ Typical RC car systems use microcontrollers and motor drivers to control speed a
 
 ## Project Structure
 remote-control-Car-contruction-ongoing-/
-│
-├── code/ # Source code for controlling the car
-├── hardware/ # Circuit diagrams, connections
-├── docs/ # Documentation and notes
-├── images/ # Project images / progress photos
-└── README.md
+|
+|── code/ # Source code for controlling the car
+|── hardware/ # Circuit diagrams, connections
+|── docs/ # Documentation and notes
+|── images/ # Project images / progress photos
+|── README.md
 
 ---
 
